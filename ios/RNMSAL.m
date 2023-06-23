@@ -34,6 +34,7 @@ RCT_REMAP_METHOD(createPublicClientApplication,
         NSString* redirectUri = [RCTConvert NSString:auth[@"redirectUri"]];
 
         MSALPublicClientApplicationConfig *applicationConfig = [[MSALPublicClientApplicationConfig alloc] initWithClientId:clientId];
+        MSALGlobalConfig.brokerAvailability = MSALBrokeredAvailabilityNone;
         if (authority) {
             MSALAuthority *msalAuthority = [MSALAuthority authorityWithURL:[NSURL URLWithString:authority] error:&msalError];
             if (msalError) {
